@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app="glyph">
+    <head>
+        <title>Glyphicons page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script  type="text/javascript" src="scripts/jquery-2.1.3.min.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.css"/>
+        <script src="scripts/bootstrap.min.js"></script>
+        <script type="text/javascript" src="scripts/angular/angular.min.js"></script>
+        <script type="text/javascript" src="glyph.js"></script>
+        <script type="text/javascript" src="directives/directives.js"></script>
+    </head>
+    <body ng-init="{{fontsize = 'font-size: large'}}">
+          <input type="button" value="x-large" ng-click="fontsize='font-size:x-large';$window.alert(fontsize)" />
+          <input type="button" value="large" ng-click="fontsize='font-size:large'"/>
+          <input type="button" value="clear" onclick="javascript:alert('fontsize')"/>
+        <div id="glyphs" ng-controller="GlyphController as glyphs" ng-style="fontsize">
+            {{fontsize}}
+            <div>
+                <div ng-repeat="glyph in glyphs.glyphs" class="nav nav-pills">
+                   <span ng-repeat="color in glyphs.colors">
+                       <a href=""><span ng-click="doPopup('popup.html', glyph.name + '\n' + glyph.id + '\n' + glyph.unicode)" ng-class="glyph.id" style="{{'color:' + color.name}}" tooltip="Invalid name!" ></span></a>
+                   </span>
+                </div>
+            </div>
+        <hr/>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-sm">Small modal</button>
+            <div class="modal fade modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <ul class="nav nav-pills">
+                        <li><a href="index.html"><span class="glyphicon glyphicon-exclamation-sign"></span> Alarm</a></li>
+                        <li><a href="index.html"><span class="glyphicon glyphicon-inbox"></span> Inbox</a></li>
+                        <li><a href="index.html"><span class="glyphicon glyphicon-refresh"></span> Reload</a></li>
+                        <li><a href="index.html"><span class="glyphicon glyphicon-send"></span> Send</a></li>
+                        <li><a href="index.html"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+        <a href="http://glyphicons.bootstrapcheatsheets.com/"></a>
+            <ul class="nav nav-pills">
+                <li><a href="index.html"><span class="glyphicon glyphicon-exclamation-sign"></span> Alarm</a></li>
+                <li><a href="index.html"><span class="glyphicon glyphicon-inbox"></span> Inbox</a></li>
+                <li><a href="index.html"><span class="glyphicon glyphicon-refresh"></span> Reload</a></li>
+                <li><a href="index.html"><span class="glyphicon glyphicon-send"></span> Send</a></li>
+                <li><a href="index.html"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
+            </ul>
+            <ul class="nav nav-pills">
+                <li><a href="index.html"><span class="glyphicon glyphicon-sort"></span>Sort</a></li>
+                <li><a href="index.html"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
+                <li><a href="edit.html"><span class="glyphicon glyphicon-edit"></span> Edit</a></li>
+                <li><a href="settings.html"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+            </ul>
+            <ul class="nav nav-pills">
+                <li><a href="trash.html"><span class="glyphicon glyphicon-trash"></span> Trash</a></li>
+                <li><a href="settings.html"><span class="glyphicon glyphicon-globe"></span> Map</a></li>
+                <li><a href="settings.html"><span class="glyphicon glyphicon-file"></span> File</a></li>
+                <li><a href="settings.html"><span class="glyphicon glyphicon-cutlery"></span> Food</a></li>
+                <li><a href="settings.html"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+            </ul>
+            <ul class="nav nav-pills">
+                <li><a href=""><span class="glyphicon glyphicon-flag"></span> Flag</a></li>
+                <li><a href=""><span class="glyphicon glyphicon-road"></span>Road</a></li>
+                <li><a href=""><span class="glyphicon glyphicon-fullscreen"></span>Full</a></li>
+            </ul>
+            <hr/>
+            <div>
+                <span class="glyphicon glyphicon-edit" style="color:blanchedalmond"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:beige"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:bisque"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:brown"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:burlywood"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:buttonface"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:cadetblue"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:captiontext"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:chartreuse"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:chocolate"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:coral"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:cornflowerblue"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:cornsilk"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:crimson"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:currentColor"></span>&nbsp;
+            </div>
+            <div>
+                <span class="glyphicon glyphicon-edit" style="color:black"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:red"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:blueviolet"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:blue"></span>&nbsp; 
+                <span class="glyphicon glyphicon-edit" style="color:greenyellow"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:green"></span>&nbsp;
+                <span class="glyphicon glyphicon-edit" style="color:cyan"></span>&nbsp;
+            </div>    
+        </div>
+    </body>
+</html>

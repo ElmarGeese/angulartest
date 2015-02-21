@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="store">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.css"/>
+        <script src="scripts/bootstrap.min.js"></script>
+        <script type="text/javascript" src="scripts/angular/angular.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+    </head>
+    <body>
+        <div ng-controller="StoreController as store">
+            <div style ="article" ng-repeat="product in store.products | orderBy:'-price'">
+                <h2>{{product.name}}</h2>
+                <hr/>
+                <div style="padding:0.5em"><button ng-show="product.canPurchase"> Buy this item</button></div>
+                <section class="tab" ng-controller="TabController as tab">
+                    <ul class="nav nav-pills">
+                      <li ng-class="{ active : tab.isSet(1)}">
+                        <a href ng-click="tab.setTab(1)">Description </a></li>
+                      <li ng-class="{ active : tab.isSet(2)}">
+                        <a href ng-click="tab.setTab(2)">Images</a></li>
+                      <li ng-class="{ active : tab.isSet(3)}">
+                        <a href ng-click="tab.setTab(3)">Reviews</a></li>
+                    </ul>
+                    <div class="panel" ng-show="tab.isSet(1)">
+                        <div class="badge"><b>Price : {{product.price| currency}}</b></div>
+                       <p>{{product.description}}</p>
+                    </div>
+                    <div class="panel" ng-show="tab.isSet(2)">
+                         <div ng-show="product.images.length">
+                            <div class="" ng-repeat="image in product.images">
+                                <img class="img-rounded img-thumbnail"  width="200" alt ="{{product.description}}" ng-src="images/{{image}}"/>
+                            </div>
+                        </div> 
+                        <div ng-hide="product.images.length">
+                            Sorry, no Images :-(,
+                        </div>
+                    </div>
+                    <div class="panel" ng-show="tab.isSet(3)">
+                        <div class="" style="padding:1em" ng-repeat="review in product.reviews">
+                            <div> Author : {{review.author}}</div>
+                            <div> Stars : {{review.stars}}</div>
+                            <div> Message : {{review.body}}</div>
+                        </div>
+                        <div class="" style="padding:1em">
+                            <form name="eviewForm" ng-init="review=''">
+                                Stars: 
+                                <select ng-model="review.stars">
+                                    <option value="1"> 1 </option>
+                                    <option value="2"> 2 </option>
+                                    <option value="3"> 3 </option>
+                                    <option value="4"> 4 </option>
+                                    <option value="5"> 5 </option>
+                                </select><br/>
+                                <textarea cols="40" ng-model="review.body"></textarea><br/>
+                                <label>Your email </label> 
+                                <input ng-model="review.author" type="email"/><br/>
+                                <input name="Submit" type="submit"/>
+                            </form>
+                           <div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>
