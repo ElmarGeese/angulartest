@@ -5,15 +5,23 @@
  */
 (function() {
     var app = angular.module('store', []);
-    app.controller('TabController', function(){
+    app.controller('TabController', function($scope, $window){
         this.tab = 1;
-        
+        $scope.list = [];
+        $scope.text = 'hello';
         this.setTab = function(newValue){
             this.tab = newValue;
         };
 
         this.isSet = function(tabName){
             return this.tab === tabName;
+        };
+        
+        $scope.submit=function() {
+        if ($scope.review.body) {
+          $scope.list.push($scope.review.body);
+          $scope.text = '';
+        };
         };
     });
 

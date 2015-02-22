@@ -18,16 +18,17 @@ and open the template in the editor.
         <div ng-controller="StoreController as store">
             <div style ="article" ng-repeat="product in store.products | orderBy:'-price'">
                 <h2>{{product.name}}</h2>
+                <p>{{product.description}}</p>
                 <hr/>
                 <div style="padding:0.5em"><button ng-show="product.canPurchase"> Buy this item</button></div>
                 <section class="tab" ng-controller="TabController as tab">
                     <ul class="nav nav-pills">
                       <li ng-class="{ active : tab.isSet(1)}">
-                        <a href ng-click="tab.setTab(1)">Description </a></li>
+                       <a href ng-click="tab.setTab(1)"><span class="glyphicon glyphicon-pencil"></span> Description </a></li>
                       <li ng-class="{ active : tab.isSet(2)}">
-                        <a href ng-click="tab.setTab(2)">Images</a></li>
+                        <a href ng-click="tab.setTab(2)"><span class="glyphicon glyphicon-picture"></span> Images</a></li>
                       <li ng-class="{ active : tab.isSet(3)}">
-                        <a href ng-click="tab.setTab(3)">Reviews</a></li>
+                        <a href ng-click="tab.setTab(3)"><span class="glyphicon glyphicon-comment"></span> Reviews</a></li>
                     </ul>
                     <div class="panel" ng-show="tab.isSet(1)">
                         <div class="badge"><b>Price : {{product.price| currency}}</b></div>
@@ -50,7 +51,7 @@ and open the template in the editor.
                             <div> Message : {{review.body}}</div>
                         </div>
                         <div class="" style="padding:1em">
-                            <form name="eviewForm" ng-init="review=''">
+                            <form  ng-submit="submit()" name="eviewForm" ng-init="review=''">
                                 Stars: 
                                 <select ng-model="review.stars">
                                     <option value="1"> 1 </option>

@@ -11,16 +11,17 @@
         <script type="text/javascript" src="glyph.js"></script>
         <script type="text/javascript" src="directives/directives.js"></script>
     </head>
-    <body ng-init="{{fontsize = 'font-size: large'}}">
-          <input type="button" value="x-large" ng-click="fontsize='font-size:x-large';$window.alert(fontsize)" />
-          <input type="button" value="large" ng-click="fontsize='font-size:large'"/>
-          <input type="button" value="clear" onclick="javascript:alert('fontsize')"/>
-        <div id="glyphs" ng-controller="GlyphController as glyphs" ng-style="fontsize">
-            {{fontsize}}
+    <body ng-init="{{fontsize = 'font-size: x-large'}}"  ng-controller="GlyphController as glyphs" >
+          <input type="button" value="Show" ng-click="doAlert(glyphs.size)" />
+          <input type="button" value="large" ng-click="setSize('large')"/>
+          <input type="button" value="x-large" ng-click="setSize('x-large')"/>
+          <input type="button" value="xx-large" ng-click="setSize('xx-large')"/>
+        <div id="glyphs" ng-style="{{glyphs.size}}">
+            {{glyphs.size}}
             <div>
                 <div ng-repeat="glyph in glyphs.glyphs" class="nav nav-pills">
                    <span ng-repeat="color in glyphs.colors">
-                       <a href=""><span ng-click="doPopup('popup.html', glyph.name + '\n' + glyph.id + '\n' + glyph.unicode)" ng-class="glyph.id" style="{{'color:' + color.name}}" tooltip="Invalid name!" ></span></a>
+                       <a href=""><span ng-click="doPopup('popup.html', glyph.name + '\n' + glyph.id + '\n' + glyph.unicode)" ng-class="glyph.id" style="{{'color:' + color.name}}"  ng-style="glyphs.size"></span></a>
                    </span>
                 </div>
             </div>

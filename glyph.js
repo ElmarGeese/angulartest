@@ -26,10 +26,17 @@
         this.glyphs = myglyphs;
         this.colors = mycolors;
         this.popup = popup;
+        this.size = "font-size:large";
+        
         $scope.setMaster = function(obj, $event){
             console.log($event.target);
             };
         $scope.greeting = 'Hello, World!';
+        
+        $scope.setSize = function(style) {
+            this.size =  "font-size:" + style + "";
+            $window.alert(this.size);
+        };
         
         $scope.doAlert = function(greeting) {
             $window.alert(greeting);
